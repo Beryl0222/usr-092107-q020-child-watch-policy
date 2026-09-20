@@ -1,0 +1,9 @@
+{
+  "event_id": "sample-020-001",
+  "event_type": "GUARDIAN_LINKED",
+  "aggregate_type": "child_profile",
+  "aggregate_id": "child_watch_policy-001",
+  "occurred_at": "2026-09-20T18:00:00+08:00",
+  "version": 1,
+  "summary": "登记儿童手表保护策略台的首条领域记录"
+}
