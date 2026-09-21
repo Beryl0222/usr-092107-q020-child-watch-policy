@@ -1,0 +1,13 @@
+{
+  "event_id": "sample-2026-09-21-004",
+  "event_type": "FEATURE_CONSENT_REVOKED",
+  "aggregate_type": "consent_grant",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T19:45:00+08:00",
+  "version": 2,
+  "summary": "监护人撤回「陌生人联系」的开启，立即恢复默认关闭",
+  "payload": {
+    "feature": "stranger_contact",
+    "guardian_id": "guardian-001"
+  }
+}

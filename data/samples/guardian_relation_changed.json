@@ -1,0 +1,13 @@
+{
+  "event_id": "sample-2026-09-21-007",
+  "event_type": "GUARDIAN_RELATION_CHANGED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T21:00:00+08:00",
+  "version": 5,
+  "summary": "家庭关系变化，监护顺位自生效时间起按新顺序适用",
+  "payload": {
+    "change_type": "custody_transfer",
+    "effective_at": "2026-10-01T00:00:00+08:00"
+  }
+}

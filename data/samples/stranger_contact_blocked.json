@@ -1,0 +1,13 @@
+{
+  "event_id": "sample-2026-09-21-010",
+  "event_type": "STRANGER_CONTACT_BLOCKED",
+  "aggregate_type": "social_circle",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T12:30:00+08:00",
+  "version": 2,
+  "summary": "陌生人来电按默认规则拦截，监护人逐项开启前一律不接通",
+  "payload": {
+    "channel": "voice_call",
+    "reason": "stranger_contact_disabled"
+  }
+}

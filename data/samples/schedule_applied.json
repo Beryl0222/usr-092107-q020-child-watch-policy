@@ -1,0 +1,15 @@
+{
+  "event_id": "sample-2026-09-21-014",
+  "event_type": "SCHEDULE_APPLIED",
+  "aggregate_type": "school_window",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T07:55:00+08:00",
+  "version": 1,
+  "summary": "学校授权时段内启用最小控制：仅保留通话、求助与必要定位",
+  "payload": {
+    "window_start": "2026-09-21T08:00:00+08:00",
+    "window_end": "2026-09-21T15:30:00+08:00",
+    "control_set": "minimal",
+    "authorized_by": "school-001"
+  }
+}

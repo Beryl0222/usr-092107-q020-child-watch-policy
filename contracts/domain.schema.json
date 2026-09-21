@@ -20,10 +20,22 @@
       "type": "string",
       "enum": [
         "GUARDIAN_LINKED",
+        "GUARDIAN_RELATION_CHANGED",
+        "GUARDIAN_CONFLICT_RESOLVED",
+        "CUSTODY_DELEGATED",
+        "EMERGENCY_CONTACT_SET",
         "POLICY_ASSIGNED",
+        "POLICY_VERSION_SUCCEEDED",
         "FEATURE_CONSENTED",
+        "FEATURE_CONSENT_REVOKED",
         "SCHEDULE_APPLIED",
-        "DECISION_AUDITED"
+        "FRIEND_LINKED",
+        "STRANGER_CONTACT_BLOCKED",
+        "PAYMENT_LIMIT_ENFORCED",
+        "RESTRICTION_EXPLAINED",
+        "USAGE_SUMMARY_DELIVERED",
+        "DECISION_AUDITED",
+        "DECISION_REPLAYED"
       ]
     },
     "aggregate_type": {
@@ -31,7 +43,12 @@
       "enum": [
         "child_profile",
         "guardian_authority",
+        "consent_grant",
         "policy_version",
+        "school_window",
+        "social_circle",
+        "spending_limit",
+        "usage_summary",
         "feature_decision"
       ]
     },
@@ -50,6 +67,9 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object"
     }
   },
   "additionalProperties": true

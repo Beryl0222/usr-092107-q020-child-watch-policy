@@ -1,0 +1,14 @@
+{
+  "event_id": "sample-2026-09-21-016",
+  "event_type": "DECISION_REPLAYED",
+  "aggregate_type": "feature_decision",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T22:00:00+08:00",
+  "version": 8,
+  "summary": "安全人员重放一次错误放行，核对当时使用的策略版本与决定依据",
+  "payload": {
+    "original_event_id": "evt-2026-09-20-114",
+    "policy_version": 4,
+    "conclusion": "旧版健康标签误标导致放行"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "event_id": "sample-2026-09-21-012",
+  "event_type": "RESTRICTION_EXPLAINED",
+  "aggregate_type": "feature_decision",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T08:00:01+08:00",
+  "version": 6,
+  "summary": "向孩子说明「步数排行」在学校时段关闭，15:30 放学后恢复",
+  "payload": {
+    "feature": "step_ranking",
+    "resume_at": "2026-09-21T15:30:00+08:00",
+    "explanation": "上课时间不显示排行，放学后就恢复"
+  }
+}

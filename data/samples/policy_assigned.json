@@ -1,0 +1,13 @@
+{
+  "event_id": "sample-2026-09-21-002",
+  "event_type": "POLICY_ASSIGNED",
+  "aggregate_type": "policy_version",
+  "aggregate_id": "policy-set-primary-low",
+  "occurred_at": "2026-09-21T08:05:00+08:00",
+  "version": 5,
+  "summary": "为低龄段指派策略版本 5：默认仅开放通话、求助与必要定位，高风险能力逐项授权",
+  "payload": {
+    "age_stage": "primary_low",
+    "policy_version": 5
+  }
+}

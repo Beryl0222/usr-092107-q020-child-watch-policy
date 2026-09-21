@@ -1,0 +1,15 @@
+{
+  "event_id": "sample-2026-09-21-001",
+  "event_type": "EMERGENCY_CONTACT_SET",
+  "aggregate_type": "child_profile",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T08:00:00+08:00",
+  "version": 2,
+  "summary": "登记两名紧急联系人；低龄默认仅保留通话、求助与必要定位",
+  "payload": {
+    "contacts": [
+      {"contact_id": "gc-001", "relation": "母亲", "priority": 1},
+      {"contact_id": "gc-002", "relation": "父亲", "priority": 2}
+    ]
+  }
+}

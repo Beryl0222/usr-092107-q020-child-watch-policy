@@ -1,0 +1,19 @@
+{
+  "event_id": "sample-2026-09-21-015",
+  "event_type": "DECISION_AUDITED",
+  "aggregate_type": "feature_decision",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T10:05:00+08:00",
+  "version": 7,
+  "summary": "课堂时段查看步数排行被拦截的授权审计",
+  "payload": {
+    "feature": "step_ranking",
+    "outcome": "denied",
+    "policy_version": 5,
+    "basis": {
+      "age_stage": "primary_low",
+      "school_window": true,
+      "ranking_rewards": "off"
+    }
+  }
+}

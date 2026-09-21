@@ -1,0 +1,13 @@
+{
+  "event_id": "sample-2026-09-21-003",
+  "event_type": "FEATURE_CONSENTED",
+  "aggregate_type": "consent_grant",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T19:30:00+08:00",
+  "version": 1,
+  "summary": "第一顺位监护人逐项开启「步数排行」，可随时撤回",
+  "payload": {
+    "feature": "step_ranking",
+    "guardian_id": "guardian-001"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "event_id": "sample-2026-09-21-008",
+  "event_type": "POLICY_VERSION_SUCCEEDED",
+  "aggregate_type": "policy_version",
+  "aggregate_id": "health-rules",
+  "occurred_at": "2026-09-21T09:00:00+08:00",
+  "version": 5,
+  "summary": "纠正上一版把「连续久坐」误标为「达标」的健康提示规则",
+  "payload": {
+    "rule_domain": "health_prompt",
+    "supersedes_version": 4,
+    "correction": "修正久坐提醒标签"
+  }
+}

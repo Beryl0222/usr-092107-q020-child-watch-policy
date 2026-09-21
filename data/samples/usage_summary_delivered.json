@@ -1,0 +1,14 @@
+{
+  "event_id": "sample-2026-09-21-013",
+  "event_type": "USAGE_SUMMARY_DELIVERED",
+  "aggregate_type": "usage_summary",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T21:30:00+08:00",
+  "version": 1,
+  "summary": "向家长投递本周使用摘要：各功能时长与拦截次数，不含聊天全文",
+  "payload": {
+    "period": "2026-W38",
+    "screen_time_minutes": 210,
+    "blocked_attempts": 3
+  }
+}

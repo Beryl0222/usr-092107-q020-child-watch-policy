@@ -1,0 +1,16 @@
+{
+  "event_id": "sample-2026-09-21-011",
+  "event_type": "PAYMENT_LIMIT_ENFORCED",
+  "aggregate_type": "spending_limit",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T20:00:00+08:00",
+  "version": 1,
+  "summary": "限时皮肤付费请求超出当月额度被拦截，连续奖励与倒计时不作为放行依据",
+  "payload": {
+    "outcome": "blocked",
+    "item": "限时皮肤",
+    "amount_fen": 2800,
+    "monthly_limit_fen": 5000,
+    "month_spent_fen": 4600
+  }
+}

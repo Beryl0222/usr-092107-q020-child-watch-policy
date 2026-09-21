@@ -1,0 +1,14 @@
+{
+  "event_id": "sample-2026-09-21-006",
+  "event_type": "GUARDIAN_CONFLICT_RESOLVED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-21T20:10:00+08:00",
+  "version": 4,
+  "summary": "两名监护人对「排行奖励」指令冲突，按顺位采用第一顺位监护人的限制",
+  "payload": {
+    "feature": "ranking_rewards",
+    "resolution_rule": "primary_guardian_first",
+    "winning_guardian_id": "guardian-001"
+  }
+}
