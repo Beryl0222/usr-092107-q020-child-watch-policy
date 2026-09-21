@@ -1,0 +1,10 @@
+{
+  "event_id": "evt-2026-0011",
+  "event_type": "SCHEDULE_APPLIED",
+  "aggregate_type": "school_window",
+  "aggregate_id": "child-001:school-01",
+  "occurred_at": "2026-09-07T08:00:00+08:00",
+  "version": 2,
+  "summary": "学校在授权时段开始应用最小控制集，时段外不施加任何控制",
+  "applied_by": "school-01"
+}

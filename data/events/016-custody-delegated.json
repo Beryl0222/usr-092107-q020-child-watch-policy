@@ -1,0 +1,16 @@
+{
+  "event_id": "evt-2026-0016",
+  "event_type": "CUSTODY_DELEGATED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-12T08:00:00+08:00",
+  "version": 3,
+  "summary": "周末临时托管给祖父，托管期间可行使逐项授权与额度调整",
+  "custody": {
+    "delegate": "guardian-grandpa-03",
+    "starts_at": "2026-09-12T08:00:00+08:00",
+    "ends_at": "2026-09-13T20:00:00+08:00",
+    "scope": ["feature_consent", "spending_limit"]
+  },
+  "delegated_by": "guardian-mother-01"
+}

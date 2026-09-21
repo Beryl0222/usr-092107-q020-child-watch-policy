@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-2026-0008",
+  "event_type": "POLICY_VERSION_PUBLISHED",
+  "aggregate_type": "policy_version",
+  "aggregate_id": "pv-2026.09.3",
+  "occurred_at": "2026-09-05T10:00:00+08:00",
+  "version": 1,
+  "summary": "发布策略版本 pv-2026.09.3：纠正健康提示中被误标为“达标表扬”的久坐提醒标签",
+  "policy_version_ref": "pv-2026.09.3",
+  "supersedes": "pv-2026.09.2"
+}

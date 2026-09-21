@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-2026-0003",
+  "event_type": "GUARDIAN_LINKED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-01T08:06:00+08:00",
+  "version": 2,
+  "summary": "绑定父亲为次要监护人",
+  "guardian": "guardian-father-02",
+  "role": "secondary"
+}

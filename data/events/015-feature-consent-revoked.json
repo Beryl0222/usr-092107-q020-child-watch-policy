@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-2026-0015",
+  "event_type": "FEATURE_CONSENT_REVOKED",
+  "aggregate_type": "feature_consent",
+  "aggregate_id": "child-001:ranking_rewards",
+  "occurred_at": "2026-09-10T20:05:00+08:00",
+  "version": 2,
+  "summary": "家长发现课堂反复查看排行后，撤回排行奖励授权，立即生效",
+  "feature": "ranking_rewards",
+  "guardian": "guardian-mother-01"
+}

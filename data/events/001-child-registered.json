@@ -1,0 +1,10 @@
+{
+  "event_id": "evt-2026-0001",
+  "event_type": "CHILD_PROFILE_REGISTERED",
+  "aggregate_type": "child_profile",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-01T08:00:00+08:00",
+  "version": 1,
+  "summary": "为儿童手表建档，登记年龄阶段为小学低年级；默认仅开放通话、求助与必要定位",
+  "age_stage": "lower_primary"
+}

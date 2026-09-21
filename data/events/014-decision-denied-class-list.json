@@ -1,0 +1,28 @@
+{
+  "event_id": "evt-2026-0014",
+  "event_type": "DECISION_AUDITED",
+  "aggregate_type": "feature_decision",
+  "aggregate_id": "dec-20260910-03",
+  "occurred_at": "2026-09-10T19:50:00+08:00",
+  "version": 1,
+  "summary": "跨品牌好友请求查看班级名单，按常驻规则拦截，不暴露群组信息",
+  "subject": "social.view_class_list",
+  "outcome": "denied",
+  "policy_version_ref": "pv-2026.09.3",
+  "counterpart_brand": "other_brand",
+  "factors": {
+    "age_stage": "lower_primary",
+    "guardianship": "standard",
+    "school_window": "out_of_window",
+    "emergency_contacts": "not_applicable",
+    "location_precision": "coarse",
+    "acquaintance_social": "open",
+    "stranger_contact": "closed",
+    "ranking_rewards": "on",
+    "content_rating": "age_9",
+    "spending_limit": {"period": "monthly", "remaining": 12.0, "currency": "CNY"},
+    "health_prompts": {"rule_version": "pv-2026.09.3", "enabled": true}
+  },
+  "restore_hint": "班级名单不会分享给其他品牌的手表哦",
+  "rules_applied": ["R-04"]
+}

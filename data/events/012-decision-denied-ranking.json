@@ -1,0 +1,28 @@
+{
+  "event_id": "evt-2026-0012",
+  "event_type": "DECISION_AUDITED",
+  "aggregate_type": "feature_decision",
+  "aggregate_id": "dec-20260910-01",
+  "occurred_at": "2026-09-10T10:15:00+08:00",
+  "version": 1,
+  "summary": "课堂时段尝试查看步数排行，按学校窗口最小控制拦截",
+  "subject": "ranking_rewards.view",
+  "outcome": "denied",
+  "policy_version_ref": "pv-2026.09.3",
+  "factors": {
+    "age_stage": "lower_primary",
+    "guardianship": "standard",
+    "school_window": "in_window",
+    "emergency_contacts": "not_applicable",
+    "location_precision": "coarse",
+    "acquaintance_social": "limited",
+    "stranger_contact": "closed",
+    "ranking_rewards": "on",
+    "content_rating": "age_9",
+    "spending_limit": {"period": "monthly", "remaining": 12.0, "currency": "CNY"},
+    "health_prompts": {"rule_version": "pv-2026.09.3", "enabled": true}
+  },
+  "restores_at": "2026-09-10T16:30:00+08:00",
+  "restore_hint": "放学 16:30 以后就能看步数排行啦",
+  "rules_applied": ["R-01", "R-09"]
+}

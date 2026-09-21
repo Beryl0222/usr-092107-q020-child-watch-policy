@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-2026-0002",
+  "event_type": "GUARDIAN_LINKED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-01T08:05:00+08:00",
+  "version": 1,
+  "summary": "绑定母亲为主要监护人",
+  "guardian": "guardian-mother-01",
+  "role": "primary"
+}

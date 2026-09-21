@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-2026-0006",
+  "event_type": "FEATURE_CONSENTED",
+  "aggregate_type": "feature_consent",
+  "aggregate_id": "child-001:payment",
+  "occurred_at": "2026-09-02T09:01:00+08:00",
+  "version": 1,
+  "summary": "主要监护人逐项开启支付能力",
+  "feature": "payment",
+  "guardian": "guardian-mother-01"
+}

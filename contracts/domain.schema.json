@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "儿童手表保护策略台领域事件",
+  "description": "事件信封与分事件必备字段。记录一经接收不得原地改写，更正通过后继记录（supersedes 指向前驱）。",
   "type": "object",
   "required": [
     "event_id",
@@ -19,10 +20,23 @@
     "event_type": {
       "type": "string",
       "enum": [
-        "GUARDIAN_LINKED",
+        "CHILD_PROFILE_REGISTERED",
+        "AGE_STAGE_CHANGED",
+        "EMERGENCY_CONTACT_SET",
         "POLICY_ASSIGNED",
+        "USAGE_SUMMARY_ISSUED",
+        "GUARDIAN_LINKED",
+        "GUARDIAN_UNLINKED",
+        "GUARDIAN_CONFLICT_RESOLVED",
+        "CUSTODY_DELEGATED",
+        "CUSTODY_ENDED",
+        "POLICY_VERSION_PUBLISHED",
         "FEATURE_CONSENTED",
+        "FEATURE_CONSENT_REVOKED",
+        "SCHOOL_WINDOW_AUTHORIZED",
+        "SCHOOL_WINDOW_REVOKED",
         "SCHEDULE_APPLIED",
+        "SPENDING_LIMIT_SET",
         "DECISION_AUDITED"
       ]
     },
@@ -32,24 +46,291 @@
         "child_profile",
         "guardian_authority",
         "policy_version",
+        "feature_consent",
+        "school_window",
+        "spending_limit",
         "feature_decision"
       ]
     },
     "aggregate_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "guardian_authority、spending_limit 使用儿童标识；feature_consent 使用 儿童标识:能力；school_window 使用 儿童标识:学校；feature_decision 使用决定标识。"
     },
     "occurred_at": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "必须携带时区偏移。"
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "同一聚合上从 1 起逐条递增。"
     },
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "policy_version_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supersedes": {
+      "type": "string",
+      "minLength": 1,
+      "description": "后继版本指向被更正的前驱版本，例如健康提示错误标签的纠正。"
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "description": "被决定的动作，如 ranking_rewards.view、payment.purchase、social.view_class_list。"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["allowed", "denied", "limited"]
+    },
+    "factors": {
+      "$ref": "#/$defs/decision_factors"
+    },
+    "restores_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "限制恢复时间；长期限制可不填，但须给出 restore_hint。"
+    },
+    "restore_hint": {
+      "type": "string",
+      "minLength": 1,
+      "description": "儿童可读的恢复说明，如“放学后 16:30 可以查看”。"
+    },
+    "entry_point": {
+      "type": "string",
+      "enum": ["store", "streak_reward", "countdown", "gift"],
+      "description": "付费入口；连续奖励、倒计时等入口不得绕过消费额度（R-06）。"
+    },
+    "rules_applied": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^R-\\d{2}$"},
+      "description": "本次决定引用的常驻规则编号。"
+    },
+    "feature": {
+      "type": "string",
+      "enum": [
+        "precise_location",
+        "acquaintance_social",
+        "stranger_contact",
+        "ranking_rewards",
+        "payment",
+        "content_above_default"
+      ],
+      "description": "需逐项授权的高风险能力；通话、求助、必要定位为默认开放，不在此列。"
+    },
+    "guardian": {"type": "string", "minLength": 1},
+    "role": {
+      "type": "string",
+      "enum": ["primary", "secondary"]
+    },
+    "age_stage": {
+      "$ref": "#/$defs/age_stage"
+    },
+    "from_stage": {
+      "$ref": "#/$defs/age_stage"
+    },
+    "to_stage": {
+      "$ref": "#/$defs/age_stage"
+    },
+    "contacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "phone"],
+        "properties": {
+          "label": {"type": "string", "minLength": 1},
+          "phone": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "assigned_by": {"type": "string", "minLength": 1},
+    "period": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": "string", "format": "date-time"},
+        "end": {"type": "string", "format": "date-time"}
+      }
+    },
+    "disputed_capability": {"type": "string", "minLength": 1},
+    "prevailing_guardian": {"type": "string", "minLength": 1},
+    "resolution_rule": {
+      "type": "string",
+      "description": "解决监护冲突所依据的常驻规则，固定为 R-03。"
+    },
+    "custody": {
+      "type": "object",
+      "required": ["delegate", "starts_at", "ends_at"],
+      "properties": {
+        "delegate": {"type": "string", "minLength": 1},
+        "starts_at": {"type": "string", "format": "date-time"},
+        "ends_at": {"type": "string", "format": "date-time"},
+        "scope": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "托管期间可行使的权限范围。"
+        }
+      }
+    },
+    "reason": {
+      "type": "string",
+      "enum": ["expired", "revoked"]
+    },
+    "window": {
+      "type": "object",
+      "required": ["days", "start", "end"],
+      "properties": {
+        "days": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]}
+        },
+        "start": {"type": "string", "pattern": "^\\d{2}:\\d{2}$"},
+        "end": {"type": "string", "pattern": "^\\d{2}:\\d{2}$"},
+        "timezone": {"type": "string"}
+      }
+    },
+    "control_scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"},
+      "description": "学校被授权实施的最小控制集。"
+    },
+    "authorized_by": {"type": "string", "minLength": 1},
+    "revoked_by": {"type": "string", "minLength": 1},
+    "applied_by": {"type": "string", "minLength": 1},
+    "limit": {
+      "type": "object",
+      "required": ["period", "amount", "currency"],
+      "properties": {
+        "period": {"type": "string", "enum": ["daily", "weekly", "monthly"]},
+        "amount": {"type": "number", "minimum": 0},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"event_type": {"const": "CHILD_PROFILE_REGISTERED"}}, "required": ["event_type"]},
+      "then": {"required": ["age_stage"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "AGE_STAGE_CHANGED"}}, "required": ["event_type"]},
+      "then": {"required": ["from_stage", "to_stage"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "EMERGENCY_CONTACT_SET"}}, "required": ["event_type"]},
+      "then": {"required": ["contacts"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "POLICY_ASSIGNED"}}, "required": ["event_type"]},
+      "then": {"required": ["policy_version_ref", "assigned_by"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "USAGE_SUMMARY_ISSUED"}}, "required": ["event_type"]},
+      "then": {
+        "required": ["period"],
+        "not": {"anyOf": [
+          {"required": ["messages"]},
+          {"required": ["chat_log"]},
+          {"required": ["transcripts"]}
+        ]}
+      }
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "GUARDIAN_LINKED"}}, "required": ["event_type"]},
+      "then": {"required": ["guardian", "role"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "GUARDIAN_UNLINKED"}}, "required": ["event_type"]},
+      "then": {"required": ["guardian"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "GUARDIAN_CONFLICT_RESOLVED"}}, "required": ["event_type"]},
+      "then": {"required": ["disputed_capability", "prevailing_guardian", "resolution_rule"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "CUSTODY_DELEGATED"}}, "required": ["event_type"]},
+      "then": {"required": ["custody"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "CUSTODY_ENDED"}}, "required": ["event_type"]},
+      "then": {"required": ["reason"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "POLICY_VERSION_PUBLISHED"}}, "required": ["event_type"]},
+      "then": {"required": ["policy_version_ref"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "FEATURE_CONSENTED"}}, "required": ["event_type"]},
+      "then": {"required": ["feature", "guardian"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "FEATURE_CONSENT_REVOKED"}}, "required": ["event_type"]},
+      "then": {"required": ["feature", "guardian"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "SCHOOL_WINDOW_AUTHORIZED"}}, "required": ["event_type"]},
+      "then": {"required": ["window", "control_scope", "authorized_by"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "SCHOOL_WINDOW_REVOKED"}}, "required": ["event_type"]},
+      "then": {"required": ["revoked_by"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "SCHEDULE_APPLIED"}}, "required": ["event_type"]},
+      "then": {"required": ["applied_by"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "SPENDING_LIMIT_SET"}}, "required": ["event_type"]},
+      "then": {"required": ["limit"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "DECISION_AUDITED"}}, "required": ["event_type"]},
+      "then": {"required": ["subject", "outcome", "policy_version_ref", "factors"]}
+    }
+  ],
+  "$defs": {
+    "age_stage": {
+      "type": "string",
+      "enum": ["preschool", "lower_primary", "upper_primary", "teen"]
+    },
+    "decision_factors": {
+      "type": "object",
+      "description": "十一项决定因子在决定发生时的取值，缺一项即无法重放。",
+      "required": [
+        "age_stage",
+        "guardianship",
+        "school_window",
+        "emergency_contacts",
+        "location_precision",
+        "acquaintance_social",
+        "stranger_contact",
+        "ranking_rewards",
+        "content_rating",
+        "spending_limit",
+        "health_prompts"
+      ],
+      "properties": {
+        "age_stage": {"description": "年龄阶段：preschool / lower_primary / upper_primary / teen"},
+        "guardianship": {"description": "监护关系状态：standard / temporary_custody / disputed"},
+        "school_window": {"description": "学校时段：in_window / out_of_window"},
+        "emergency_contacts": {"description": "对方是否紧急联系人：listed / unlisted / not_applicable"},
+        "location_precision": {"description": "当前定位精度：precise / coarse / hidden"},
+        "acquaintance_social": {"description": "熟人社交：open / limited / closed"},
+        "stranger_contact": {"description": "陌生人联系：open / limited / closed"},
+        "ranking_rewards": {"description": "排行奖励：on / off"},
+        "content_rating": {"description": "内容分级上限：age_6 / age_9 / age_12"},
+        "spending_limit": {"description": "消费额度状态，如 {\"period\": \"monthly\", \"remaining\": 12.0, \"currency\": \"CNY\"}"},
+        "health_prompts": {"description": "健康提示规则版本与开关，如 {\"rule_version\": \"pv-2026.09.3\", \"enabled\": true}"}
+      }
     }
   },
   "additionalProperties": true

@@ -1,0 +1,10 @@
+{
+  "event_id": "evt-2026-0018",
+  "event_type": "CUSTODY_ENDED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-13T20:00:00+08:00",
+  "version": 5,
+  "summary": "临时托管到期结束，监护顺序恢复为主要监护人优先",
+  "reason": "expired"
+}

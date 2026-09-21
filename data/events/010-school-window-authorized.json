@@ -1,0 +1,17 @@
+{
+  "event_id": "evt-2026-0010",
+  "event_type": "SCHOOL_WINDOW_AUTHORIZED",
+  "aggregate_type": "school_window",
+  "aggregate_id": "child-001:school-01",
+  "occurred_at": "2026-09-07T07:30:00+08:00",
+  "version": 1,
+  "summary": "监护人授权学校在工作日 08:00–16:30 实施最小控制",
+  "window": {
+    "days": ["mon", "tue", "wed", "thu", "fri"],
+    "start": "08:00",
+    "end": "16:30",
+    "timezone": "Asia/Shanghai"
+  },
+  "control_scope": ["ranking_rewards", "payment", "acquaintance_social", "stranger_contact"],
+  "authorized_by": "guardian-mother-01"
+}

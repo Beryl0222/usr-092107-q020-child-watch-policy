@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-2026-0004",
+  "event_type": "EMERGENCY_CONTACT_SET",
+  "aggregate_type": "child_profile",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-01T08:10:00+08:00",
+  "version": 2,
+  "summary": "登记紧急联系人：母亲、父亲",
+  "contacts": [
+    {"label": "妈妈", "phone": "+8613800000001"},
+    {"label": "爸爸", "phone": "+8613800000002"}
+  ]
+}

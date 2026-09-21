@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-2026-0009",
+  "event_type": "POLICY_ASSIGNED",
+  "aggregate_type": "child_profile",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-05T10:05:00+08:00",
+  "version": 3,
+  "summary": "将策略版本 pv-2026.09.3 指派给该儿童，替换 pv-2026.09.2",
+  "policy_version_ref": "pv-2026.09.3",
+  "assigned_by": "guardian-mother-01"
+}

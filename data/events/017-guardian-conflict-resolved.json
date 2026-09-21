@@ -1,0 +1,12 @@
+{
+  "event_id": "evt-2026-0017",
+  "event_type": "GUARDIAN_CONFLICT_RESOLVED",
+  "aggregate_type": "guardian_authority",
+  "aggregate_id": "child-001",
+  "occurred_at": "2026-09-12T09:30:00+08:00",
+  "version": 4,
+  "summary": "托管生效期间祖父与父亲就支付授权意见冲突，按 R-03 由临时托管人决定",
+  "disputed_capability": "feature_consent:payment",
+  "prevailing_guardian": "guardian-grandpa-03",
+  "resolution_rule": "R-03"
+}

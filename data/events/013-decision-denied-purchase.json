@@ -1,0 +1,29 @@
+{
+  "event_id": "evt-2026-0013",
+  "event_type": "DECISION_AUDITED",
+  "aggregate_type": "feature_decision",
+  "aggregate_id": "dec-20260910-02",
+  "occurred_at": "2026-09-10T19:42:00+08:00",
+  "version": 1,
+  "summary": "限时皮肤倒计时入口发起 18 元购买，本月剩余额度 12 元，按同一额度规则拦截",
+  "subject": "payment.purchase",
+  "outcome": "denied",
+  "policy_version_ref": "pv-2026.09.3",
+  "entry_point": "countdown",
+  "factors": {
+    "age_stage": "lower_primary",
+    "guardianship": "standard",
+    "school_window": "out_of_window",
+    "emergency_contacts": "not_applicable",
+    "location_precision": "coarse",
+    "acquaintance_social": "limited",
+    "stranger_contact": "closed",
+    "ranking_rewards": "on",
+    "content_rating": "age_9",
+    "spending_limit": {"period": "monthly", "remaining": 12.0, "currency": "CNY"},
+    "health_prompts": {"rule_version": "pv-2026.09.3", "enabled": true}
+  },
+  "restores_at": "2026-10-01T00:00:00+08:00",
+  "restore_hint": "额度每月 1 号恢复，也可以请家长调整额度",
+  "rules_applied": ["R-06"]
+}
